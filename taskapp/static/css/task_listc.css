@@ -1,0 +1,29 @@
+body {
+    background-color: #022E5B;
+}
+
+.task_div a{
+    color:#DAEAFF;
+}
+
+.task_div a:hover{
+    color:beige;
+}
+
+.task_div p{
+    color: #DAEAFF;
+}
+
+.task_div {
+    border-top: 2px solid #DAEAFF;     
+    border-bottom: 2px solid #DAEAFF;
+    width: 100%;
+}
+
+.task_create {
+
+    color: aliceblue;
+    background-color: black;
+
+}
+

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{task.title}}</title>
+</head>
+<body>
+    <h2>Удаление задачи {{task.title}}</h2>
+    <h3>Вы точно хотите удалить задачу? Она удалится навсегда</h3>
+    <p><strong>Название:</strong>{{task.title}}</p>
+    <p><strong>Описание:</strong>{{task.description}}</p>
+    <p><strong>Выполнено:</strong>{%if task.completed%}✅{%else%}❌{%endif%}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+    </form>
+</body>
+</html>

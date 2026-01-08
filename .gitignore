@@ -1,0 +1,27 @@
+# === Python ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+*.cover
+*.log
+
+# Виртуальное окружение
+venv/
+.env/
+.venv/
+
+# Кэш и временные файлы
+*.tmp
+*.temp
+*.swp
+*.swo
+
+.idea/
+
+# === Env files ===
+.env
+*.env

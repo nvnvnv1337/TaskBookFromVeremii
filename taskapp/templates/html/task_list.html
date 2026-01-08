@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <title>Список задач</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/task_listc.css' %}">
+</head>
+
+
+<body>
+    <h1 class="text">Список задач</h1>
+    <a href="{% url 'task_create' %}" class="task_create">+</a>
+    {% if tasks %}
+        
+        {% for t in tasks %}
+        <div class="task_div">
+        <a href="{% url 'task_detail' t.id%}"><h3 class="task_text">{{t.title}}</h3></a>
+        <p class="text">Статус:{% if t.completed %}✅ {% else %}❌{%endif%}</p>
+        </div>
+        {%endfor%}
+        
+
+    {%else%}
+        <div>
+        <h1>Задач пока нет</h1>
+        </div>
+    {% endif %}
+
+
+
+
+</body>
+</html>

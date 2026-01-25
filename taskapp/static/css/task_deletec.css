@@ -1,0 +1,43 @@
+html, body {
+    background-color: #022E5B;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    margin: 0;
+    
+}
+
+
+
+.square{
+    background: black;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    z-index: 999;
+    
+     
+}
+
+.content{
+    position: absolute;
+    top: 102px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.title{
+    position: absolute;
+    left: 50%;
+    color: aliceblue;
+    z-index: 1000;
+    transform: translateX(-50%);
+    top: 13%;
+    
+}
+
+.text{
+    color: aliceblue;
+}
+
+
+

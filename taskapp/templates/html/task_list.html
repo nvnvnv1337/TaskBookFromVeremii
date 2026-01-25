@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang='ru'>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Список задач</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/task_listc.css' %}">
@@ -9,8 +10,9 @@
 
 
 <body>
-    <h1 class="text">Список задач</h1>
-    <a href="{% url 'task_create' %}" class="task_create">+</a>
+    <div class="square"><h1 class="text">Список задач</h1>
+    <a href="{% url 'task_create' %}" class="task_create">+</a></div>
+    
     {% if tasks %}
         
         {% for t in tasks %}
@@ -23,12 +25,9 @@
 
     {%else%}
         <div>
-        <h1>Задач пока нет</h1>
+        <h1 class="none">Задач пока нет</h1>
         </div>
     {% endif %}
-
-
-
 
 </body>
 </html>

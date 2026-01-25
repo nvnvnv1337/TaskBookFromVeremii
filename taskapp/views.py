@@ -17,7 +17,7 @@ from django.views.decorators.cache import never_cache
       #  print('Ключи не найдены')
 
 @never_cache
-@cache_page(60 * 15, key_prefix='task_list')
+#@cache_page(60 * 15, key_prefix='task_list')
 def task_list(request):
     tasks = Task.objects.all()
     

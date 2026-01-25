@@ -1,18 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{task.title}}</title>
+    <link rel="stylesheet" href="{% static 'css/task_deletec.css'%}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <h2>Удаление задачи {{task.title}}</h2>
-    <h3>Вы точно хотите удалить задачу? Она удалится навсегда</h3>
-    <p><strong>Название:</strong>{{task.title}}</p>
-    <p><strong>Описание:</strong>{{task.description}}</p>
-    <p><strong>Выполнено:</strong>{%if task.completed%}✅{%else%}❌{%endif%}</p>
+    <div class="square"><h2 class="title">Удаление задачи: {{task.title}}</h2></div>
+    <div class="content">
+    
+    <h3 class="text">Вы точно хотите удалить задачу? Она удалится навсегда</h3>
+    <strong style="color: aliceblue; transform: translateX(50%); position:absolute;">Описание:</strong>
+    <p class="description">{{task.description}}</p>
+    <p class="completed"><strong>Выполнено:</strong>{%if task.completed%}✅{%else%}❌{%endif%}</p>
     <form method="post">
         {% csrf_token %}
         <button type="submit">Удалить</button>
     </form>
+    </div>
 </body>
 </html>

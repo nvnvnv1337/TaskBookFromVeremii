@@ -1,0 +1,117 @@
+html, body {
+    background-color: #022E5B;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    margin: 0;
+    
+}
+
+
+
+.square{
+    background: black;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    z-index: 999;
+    
+     
+}
+
+.content{
+    position: absolute;
+    top: 102px;
+    left: 50%;
+    
+}
+
+.text{
+    position: absolute;
+    left: 50%;
+    color: aliceblue;
+    z-index: 1000;
+    transform: translateX(-50%);
+    top: 10%;
+    position: absolute;
+}
+
+.exit {
+    position: absolute;
+    color: aliceblue;
+    background-color:darkblue;
+    left: 90%;
+    text-decoration: none;
+    z-index: 1000;
+    padding: 10px 15px;
+    border-radius: 10px;
+    top: 30%;
+
+
+}
+
+.exit:hover{
+    background-color: blue;
+
+}
+
+
+.description{
+    width: 30%;
+    background-color: aliceblue;
+    border-radius: 8px;
+    padding: 10px 15px;
+    text-wrap:wrap;
+    transform: translateX(-50%);
+    text-align: center;
+    position: absolute;
+}
+
+.edit{
+    position: relative;
+    text-decoration: none;
+    color: aliceblue;
+    background-color:darkblue;
+    border-radius: 5px;
+    padding: 10px 15px;
+    border: 2px solid black;
+    transform: translateX(-25%);
+}
+
+.del{
+    position: relative;
+    text-decoration: none;
+    color: aliceblue;
+    background-color: darkred;
+    border-radius: 5px;
+    padding: 10px 15px;
+    border: 2px solid black;
+    transform: translateX(-25%);
+}
+
+.edit:hover{
+
+    background-color:blue;
+
+    
+}
+
+.del:hover{
+    background-color:red;
+    
+}
+
+.completed{
+    position: relative;
+    color: aliceblue;
+    transform: translateX(-6%);
+}
+
+.des{
+    color: aliceblue;
+    position: absolute;
+    transform: translateX(-50%);
+}
+
+
+
+

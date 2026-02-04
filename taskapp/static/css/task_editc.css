@@ -1,0 +1,94 @@
+html, body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #022e5b;
+    height: 100%;
+}
+
+.title{
+    background-color: aliceblue;
+    border: 2px solid black;
+    
+    color: black;
+    background-color: aliceblue;
+}
+
+.description{
+    background-color: aliceblue;
+    
+    border-radius: 5px;
+    color: black;
+    background-color: aliceblue;
+}
+
+.submit{
+    background-color: darkblue;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: aliceblue;
+    padding: 10px 15px;
+}
+
+.submit:hover{
+    background-color: blue;
+}
+
+.content form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    top: 102px;
+    position: relative;
+
+
+}
+
+.content{
+    background-color: #02003d;
+    height: 100%;
+    width: fit-content;
+    margin: 100px auto 0;
+    padding: 20px;
+    
+}
+
+.square{
+    background: black;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    z-index: 999;
+    top: 0;  
+    left: 0;
+}
+
+.text{
+    position: absolute;
+    left: 50%;
+    color: aliceblue;
+    z-index: 1000;
+    transform: translateX(-50%);
+    top: 10%;
+    position: absolute;
+}
+
+.exit {
+    position: absolute;
+    color: aliceblue;
+    background-color:darkblue;
+    left: 90%;
+    text-decoration: none;
+    z-index: 1000;
+    padding: 10px 15px;
+    border-radius: 10px;
+    top: 30%;
+}
+
+.exit:hover{
+    background-color: blue;
+}
+
+.color-text{
+    color: aliceblue;
+}
+

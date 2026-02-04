@@ -8,16 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <div class="square"><h2 class="title">Удаление задачи: {{task.title}}</h2></div>
+    <div class="square"><h2 class="title">Удаление задачи: {{task.title}}</h2><a href="{% url 'task_detail' task.id%}" class="exit" >↩</a></div>
     <div class="content">
     
     <h3 class="text">Вы точно хотите удалить задачу? Она удалится навсегда</h3>
-    <strong style="color: aliceblue; transform: translateX(50%); position:absolute;">Описание:</strong>
-    <p class="description">{{task.description}}</p>
+    <strong class="description">Описание:</strong>
+    <p class="description-p">{{task.description}}</p>
     <p class="completed"><strong>Выполнено:</strong>{%if task.completed%}✅{%else%}❌{%endif%}</p>
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Удалить</button>
+        <button type="submit" class="del">Удалить</button>
     </form>
     </div>
 </body>

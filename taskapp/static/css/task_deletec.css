@@ -14,15 +14,27 @@ html, body {
     height: 100px;
     position: fixed;
     z-index: 999;
-    
+    top: 0;
      
 }
 
+
 .content{
-    position: absolute;
-    top: 102px;
-    left: 50%;
-    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    position: relative;
+    
+}
+
+.content{
+    background-color: #02003d;
+    height: 100%;
+    width: 40%;
+    margin: 100px auto 0;
+    padding: 20px;
+    max-width: 800px;
 }
 
 .title{
@@ -39,5 +51,54 @@ html, body {
     color: aliceblue;
 }
 
+.description{
+    color: aliceblue;
+}
+
+.description-p{
+    width: 30%;
+    background-color: aliceblue;
+    border-radius: 8px;
+    padding: 10px 15px;
+    text-wrap:wrap;
+    max-width: 600px;
+    overflow-wrap: break-word;
+}
+
+.completed{
+    color: aliceblue;
+}
+
+.exit {
+    position: absolute;
+    color: aliceblue;
+    background-color:darkblue;
+    left: 90%;
+    text-decoration: none;
+    z-index: 1000;
+    padding: 10px 15px;
+    border-radius: 10px;
+    top: 30%;
 
 
+}
+
+.exit:hover{
+    background-color: blue;
+
+}
+
+.del{
+    background-color: darkred;
+    color: aliceblue;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: pointer;
+
+
+}
+
+.del:hover{
+    background-color: red;
+}

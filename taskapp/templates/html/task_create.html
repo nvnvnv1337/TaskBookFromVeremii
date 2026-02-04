@@ -1,15 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{% static 'css/task_createc.css' %}">
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Создание задачи</title>
 </head>
 <body>
-    <h1>Создайте задачу</h1>
-    <form method='post'>
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type='sumbit'>Отправить</button>
+    <div class="square"><h2 class="text">Создание задачи</h2><a href="{% url 'task_list' %}" class="exit">↩</a></div>
+    
+    <div class="content">
+    <form method="post" class="color-text">
+        {%csrf_token%}
+        {{form.title.label}}
+        {{form.title}}
+        {{form.description.label}}
+        {{form.description}}
+        <div class="chek">
+            <label>Выполнено:</label>
+            {{form.completed}}
+        </div>
+
+        
+        <button type="submit" class="submit">Сохранить</button>
     </form>
+
+    
+    </div>
 </body>
 </html>

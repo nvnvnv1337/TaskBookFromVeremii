@@ -16,8 +16,10 @@
     {{task.description}}
     </div>
     <p class="completed">Выполнено: {% if task.completed %}✅ {%else%}❌{%endif%}</p>
+    <div class="button">
     <a href="{% url 'task_edit' task.id%}" class="edit">Изменить задачу</a>
     <a href="{% url 'task_delete' task.id%}" class="del">Удалить задачу</a>
+    </div>
     </div>
 </body>
 </html>

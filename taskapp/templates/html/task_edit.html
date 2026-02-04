@@ -1,17 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{% static 'css/task_editc.css' %}">
     <meta charset="UTF-8">
     <title>{{task.title}}</title>
 </head>
 <body>
-    <h2>Редактирование задачи {{task.title}}</h2>
-    <form method="post">
+    <div class="square"><h2 class="text">Редактирование задачи: {{task.title}}</h2><a href="{% url 'task_detail' task.id%}" class="exit">↩</a></div>
+    
+    <div class="content">
+    <form method="post" class="color-text">
         {%csrf_token%}
-        {{form.as_p}}
-        <button type="submit">Отправить</button>
+        {{form.title.label}}
+        {{form.title}}
+        {{form.description.label}}
+        {{form.description}}
+        <div class="chek">
+            <label>Выполнено:</label>
+            {{form.completed}}
+        </div>
+
+        
+        <button type="submit" class="submit">Сохранить</button>
     </form>
 
-    <a href="{% url 'task_detail' task.id%}">Назад к задаче</a>
+    
+    </div>
 </body>
 </html>

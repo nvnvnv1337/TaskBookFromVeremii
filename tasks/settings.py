@@ -28,7 +28,6 @@ DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'taskapp'
+    'taskapp',
+    'allauth',
+    'allauth.account'
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
  #       }
   #  }
 #}
+
+AUTHENTICATION_BACKENDS=[
+    'django.contrib.auth_backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackends',
+]
+
+SITE_ID=1
+
+ACCOUNT_USERNAME_REQUIRED=False
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_EMAIL_METHOD='email'
+ACCOUNT_EMAIL_VERIFICATION='mandatory'
+ACCOUNT_SESSION_REMBER=True
+ACCOUNT_UNIQUE_EMAIL=False
+
+LOGIN_URL='account/login'
+LOGIN_REDIRECT_URL='/'
+LOGOUT_REDIRECT_URL='/'

@@ -5,7 +5,7 @@ from .models import Task
 from .forms import Taskform
 from django.core.cache import cache
 from django.views.decorators.cache import never_cache
-
+from django.contrib.auth.decorators import login_required
 
 #def clear_cache():
    # keys = cache.keys('*task_list*')
@@ -15,11 +15,16 @@ from django.views.decorators.cache import never_cache
 
     #else:
       #  print('Ключи не найдены')
+@login_required
+def home(request):
+    
+    return render(request, 'html/home.html')
 
 @never_cache
 #@cache_page(60 * 15, key_prefix='task_list')
+@login_required
 def task_list(request):
-    tasks = Task.objects.all()
+    tasks = Task.objects.filter(user=request.user)
     
     return render(request, 'html/task_list.html', {'tasks': tasks})
 

@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'taskapp',
     'allauth',
-    'allauth.account'
+    'allauth.account',
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -50,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware'
 ]
 
 ROOT_URLCONF = 'tasks.urls'
@@ -145,8 +148,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #}
 
 AUTHENTICATION_BACKENDS=[
-    'django.contrib.auth_backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackends',
+    'django.contrib.auth.auth_backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 SITE_ID=1
@@ -155,9 +158,9 @@ ACCOUNT_USERNAME_REQUIRED=False
 ACCOUNT_EMAIL_REQUIRED=True
 ACCOUNT_EMAIL_METHOD='email'
 ACCOUNT_EMAIL_VERIFICATION='mandatory'
-ACCOUNT_SESSION_REMBER=True
+ACCOUNT_SESSION_REMEMBER=True
 ACCOUNT_UNIQUE_EMAIL=False
 
-LOGIN_URL='account/login'
+LOGIN_URL='/account/login'
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/'

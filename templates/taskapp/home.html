@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head lang='en'> 
+    <title>Выберете что хотите сделать</title>
+    <meta charset='UTF-8'>
+    <link rel='stylesheet' href="{% static 'css/homec.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <div class="square"><h1 class="text">Главная страница</h1></div>
+    <div class="content">
+    <a href="{% url 'task_list' %}" class="go-over">Перейти к задачам</a>
+    <a href="{% url 'account_logout'%}" class="close">Выйти</a>
+    </div>
+
+
+</body>
+</html>

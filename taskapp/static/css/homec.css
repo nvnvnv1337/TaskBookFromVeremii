@@ -1,0 +1,65 @@
+html, body {
+    background-color: #022E5B;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    margin: 0;
+    
+    
+}
+
+
+
+.square{
+    background: black;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    z-index: 999;
+    
+     
+}
+.text{  
+    position: absolute;
+    left: 50%;
+    color: aliceblue;
+    z-index: 1000;
+    transform: translateX(-50%);
+    top: 10%;
+    position: absolute;
+}
+
+.content{
+    top: 110px;
+    z-index: 1000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    gap: 10px;
+}
+
+.close{
+    background-color: red;
+    color:black;
+    border-radius: 8px;
+    padding: 2px 5px;
+    text-decoration: none;
+    border: black;
+}
+
+.go-over{
+    background-color: blue;
+    color:black;
+    border-radius: 8px;
+    padding: 2px 5px;
+    text-decoration: none;
+    border: 2px solid black;
+}
+
+.close:hover{
+    background-color: darkred;
+}
+
+.go-over:hover{
+    background-color: darkblue;
+}

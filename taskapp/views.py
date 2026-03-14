@@ -6,33 +6,33 @@ from .forms import Taskform
 from django.core.cache import cache
 from django.views.decorators.cache import never_cache
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.vary import vary_on_cookie
 
-#def clear_cache():
-   # keys = cache.keys('*task_list*')
-   # if keys:
-     #   for key in keys:
-            #cache.delete(key)
 
-    #else:
-      #  print('Ключи не найдены')
 @login_required
 def home(request):
     
-    return render(request, 'html/home.html')
+    return render(request, 'taskapp/home.html')
 
-@never_cache
-#@cache_page(60 * 15, key_prefix='task_list')
-@login_required
+@login_required  
 def task_list(request):
-    tasks = Task.objects.filter(user=request.user)
-    
-    return render(request, 'html/task_list.html', {'tasks': tasks})
+    cache_key = f'task_list_by{request.user.id}'
+    tasks = cache.get(cache_key)
+    if not tasks:
+        tasks = Task.objects.filter(user=request.user)
+        cache.set(cache_key, tasks, 30*5)
+    return render(request, 'taskapp/task_list.html', {'tasks': tasks})
 
 
+@login_required
 def create_task(request):
     if request.method == 'POST':
         form = Taskform(request.POST)
         if form.is_valid():
+            task = form.save(commit=False)
+            task.user = request.user
+            cache_key = f'task_list_by{request.user.id}'
+            cache.delete(cache_key)
             form.save()
             #clear_cache()
             return redirect('task_list')
@@ -40,32 +40,37 @@ def create_task(request):
     else:
         form = Taskform()
 
-    return render(request, 'html/task_create.html', {'form': form})
-
+    return render(request, 'taskapp/task_create.html', {'form': form})
+@login_required
 def task_detail(request, task_id):
     task = Task.objects.get(id=task_id)
-    return render(request, 'html/task_detail.html', {'task': task})
-
+    return render(request, 'taskapp/task_detail.html', {'task': task})
+@login_required
 def task_edit(request, task_id):
     task = Task.objects.get(id=task_id)
     if request.method == 'POST':
         form = Taskform(request.POST, instance=task)
         if form.is_valid():
+            cache_key = f'task_list_by{request.user.id}'
+            cache.delete(cache_key)
             form.save()
             #clear_cache()
             return redirect('task_detail', task_id=task.id)
 
     else:
         form = Taskform(instance=task)
-        return render(request, 'html/task_edit.html', {'form': form, 'task': task})
-
+        return render(request, 'taskapp/task_edit.html', {'form': form, 'task': task})
+@login_required
 def task_delete(request, task_id):
     task = Task.objects.get(id=task_id)
     if request.method == 'POST':
+        cache_key = f'task_list_by{request.user.id}'
+        cache.delete(cache_key)
         task.delete()
         #clear_cache()
         return redirect('task_list')
 
     else:
-        return render(request, 'html/task_delete.html', {'task':task})
-        
+        return render(request, 'taskapp/task_delete.html', {'task':task})
+
+

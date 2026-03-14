@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'taskapp',
     'allauth',
     'allauth.account',
+    'rest_framework',
     
     
 ]
@@ -52,7 +53,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware'
+    'allauth.account.middleware.AccountMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'tasks.urls'
@@ -60,10 +62,11 @@ ROOT_URLCONF = 'tasks.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR , 'templates'],   
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -112,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
@@ -138,17 +141,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-#CACHES = {
-  #  "default":{
- #       "BACKEND": "django_redis.cache.RedisCache",
-   #     "LOCATION": "redis://redis:6379/0",
- #       "OPTION":{
- #       }
-  #  }
-#}
+CACHES = {
+    "default":{
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/0",
+        "OPTION":{
+        }
+    }
+}
 
 AUTHENTICATION_BACKENDS=[
-    'django.contrib.auth.auth_backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
@@ -164,3 +167,13 @@ ACCOUNT_UNIQUE_EMAIL=False
 LOGIN_URL='/account/login'
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/'
+
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_APP_PASSWORD')
+EMAIL_HOST_USER='o3868658@gmail.com'
+DEFAULT_FROM_EMAIL = 'TaskBook o3868658@gmail.com'
+
+

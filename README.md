@@ -26,8 +26,8 @@
 
 # Как запустить (линукс/MacOs):
     1) Клонировать проект:
-        git clone 
-        cd 
+        git clone https://github.com/nvnvnv1337/TaskBookFromVeremii
+        cd taskbook-main
     2) Создать файл с переменными окружения и вставить туда данные:
         touch .env 
         nano .env

@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_TOKEN')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG')
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.119', '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -37,11 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'taskapp',
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'rest_framework',
+    'taskapp',
     
+    'rest_framework',
     
 ]
 
@@ -81,6 +82,7 @@ WSGI_APPLICATION = 'tasks.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DIP
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -152,28 +154,28 @@ CACHES = {
 
 AUTHENTICATION_BACKENDS=[
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
 ]
 
 SITE_ID=1
 
-ACCOUNT_USERNAME_REQUIRED=False
-ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_AUTHENTICATION_METHOD='email'
+ACCOUNT_USERNAME_REQUIRED=False 
+ACCOUNT_EMAIL_REQUIRED=True 
 ACCOUNT_EMAIL_METHOD='email'
 ACCOUNT_EMAIL_VERIFICATION='mandatory'
-ACCOUNT_SESSION_REMEMBER=True
-ACCOUNT_UNIQUE_EMAIL=False
-
-LOGIN_URL='/account/login'
+ACCOUNT_SESSION_REMBER=True
+ACCOUNT_UNIQUE_EMAIL=True
+LOGIN_URL='/accounts/login/'
 LOGIN_REDIRECT_URL='/'
-LOGOUT_REDIRECT_URL='/'
-
-EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_PORT=587
+EMAIL_BACKENDS=os.environ.get('EMAIL_BACKENDS')
 EMAIL_USE_TLS=True
-EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST=os.environ.get('EMAIL_HOST')
+EMAIL_PORT=os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER=os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_APP_PASSWORD')
-EMAIL_HOST_USER='o3868658@gmail.com'
-DEFAULT_FROM_EMAIL = 'TaskBook o3868658@gmail.com'
+DEFAULT_FROM_EMAIL=os.environ.get('DEFAULT_FROM_EMAIL')
+
+APPEND_SLASH = True
 
 
